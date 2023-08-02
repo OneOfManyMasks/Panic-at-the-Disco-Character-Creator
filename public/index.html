@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Panic at the Dojo Character Creator</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="row help-content">
+		<div class="col-12 text-center">
+			<h1>Welcome to the Panic at the Dojo Character Creator</h1>
+			<p>If you ever want to hide the form and informational elements to make this more print friendly press 'H' when a radio button or text input section is not being focused.
+				 Pressing any key will show these elements again</p>
+				 <p>What kind of character are you making?</p>
+				 <div class="form-check form-check-inline">
+				  <input onclick="toggleCharacter('hero')" class="form-check-input" type="radio" value="hero" name="inlineRadioOptions" id="inlineRadio4">
+				  <label class="form-check-label" for="inlineRadio4">Hero</label>
+				</div>
+				 <div class="form-check form-check-inline">
+				  <input onclick="toggleCharacter('stooge')" class="form-check-input" type="radio" value="stooge" name="inlineRadioOptions" id="inlineRadio1">
+				  <label class="form-check-label" for="inlineRadio1">Stooge</label>
+				</div>
+				 <div class="form-check form-check-inline">
+				  <input onclick="toggleCharacter('warrior')" class="form-check-input" type="radio" value="warrior" name="inlineRadioOptions" id="inlineRadio2">
+				  <label class="form-check-label" for="inlineRadio2">Warrior</label>
+				</div>
+				 <div class="form-check form-check-inline">
+				  <input onclick="toggleCharacter('boss')" class="form-check-input" type="radio" value="boss" name="inlineRadioOptions" id="inlineRadio3">
+				  <label class="form-check-label" for="inlineRadio3">Boss</label>
+				</div>
+		</div>
+	</div>
+	<div class="row hero warrior boss stooge  d-none">
+		<div class="col-12">
+			<input class="name"" placeholder="Character Name"/>
+		</div>
+	</div>
+	
+	<div class="row hero warrior boss stooge  d-none">
+		<div class="col-3 ">
+			<div>
+				<input class = 'skill-name c-toggle hero boss' type="text" placeholder="Personal Skill Name"/>
+				<textarea  class = ' c-toggle hero boss' class="ml-20" rows="3" placeholder="Personal Skill Description"></textarea>
+			</div>
+		</div>
+		<div class="col-3 hero warrior boss c-toggle ">
+			<select onChange="showPicture('#skill-one-img', this.options[this.selectedIndex].value)"  class="form-select c-select  d-none  c-toggle  hero boss warrior" id="skill-one" title="skill-one">
+				<option value="" >Choose Skill</option>
+				<option value="img/forms/blaster_skill.png" >Blaster - Basically Magic</option>
+				<option value="img/forms/control_skill.png" >Control - Professional</option>
+				<option value="img/forms/dance_skill.png" >Dance - Put on a Show</option>
+				<option value="img/forms/iron_skill.png" >Iron - Unmovable</option>
+				<option value="img/forms/one-two_skill.png" >One Two - Think Fast</option>
+				<option value="img/forms/power_skill.png" >Power - Unstoppable</option>
+				<option value="img/forms/reversal_skill.png" >Reversal - Perfect Timing</option>
+				<option value="img/forms/shadow_skill.png" >Shadow - Shadow Walker</option>
+				<option value="img/forms/song_skill.png" >Song - Natural Charisma</option>
+				<option value="img/forms/vigilence_skill.png" >Vigilence - Eyes Wide Open</option>
+				<option value="img/forms/wild_skill.png" >Wild - Wind Runner</option>
+				<option value="img/forms/zen_skill.png" >Zen - Peaceful Heart</option>
+			</select>
+			<img class="w-100 c-toggle mb-2 d-none" id="skill-one-img" src=""/>
+		</div>
+		<div class="col-3 hero boss  c-toggle ">
+			<select onChange="showPicture('#skill-two-img', this.options[this.selectedIndex].value)"  class="form-select c-select  d-none  c-toggle  hero boss warrior" id="skill-one" title="skill-two">
+				<option value="" >Choose Skill</option>
+				<option value="img/forms/blaster_skill.png" >Blaster - Basically Magic</option>
+				<option value="img/forms/control_skill.png" >Control - Professional</option>
+				<option value="img/forms/dance_skill.png" >Dance - Put on a Show</option>
+				<option value="img/forms/iron_skill.png" >Iron - Unmovable</option>
+				<option value="img/forms/one-two_skill.png" >One Two - Think Fast</option>
+				<option value="img/forms/power_skill.png" >Power - Unstoppable</option>
+				<option value="img/forms/reversal_skill.png" >Reversal - Perfect Timing</option>
+				<option value="img/forms/shadow_skill.png" >Shadow - Shadow Walker</option>
+				<option value="img/forms/song_skill.png" >Song - Natural Charisma</option>
+				<option value="img/forms/vigilence_skill.png" >Vigilence - Eyes Wide Open</option>
+				<option value="img/forms/wild_skill.png" >Wild - Wind Runner</option>
+				<option value="img/forms/zen_skill.png" >Zen - Peaceful Heart</option>
+			</select>
+			<img class="w-100 c-toggle mb-2 d-none" id="skill-two-img" src=""/>
+		</div>
+		<div class="col-3 hero  boss c-toggle ">
+			<select onChange="showPicture('#skill-three-img', this.options[this.selectedIndex].value)"  class="form-select c-select  d-none  c-toggle  hero boss warrior" id="skill-three" title="skill-one">
+				<option value="" >Choose Skill</option>
+				<option value="img/forms/blaster_skill.png" >Blaster - Basically Magic</option>
+				<option value="img/forms/control_skill.png" >Control - Professional</option>
+				<option value="img/forms/dance_skill.png" >Dance - Put on a Show</option>
+				<option value="img/forms/iron_skill.png" >Iron - Unmovable</option>
+				<option value="img/forms/one-two_skill.png" >One Two - Think Fast</option>
+				<option value="img/forms/power_skill.png" >Power - Unstoppable</option>
+				<option value="img/forms/reversal_skill.png" >Reversal - Perfect Timing</option>
+				<option value="img/forms/shadow_skill.png" >Shadow - Shadow Walker</option>
+				<option value="img/forms/song_skill.png" >Song - Natural Charisma</option>
+				<option value="img/forms/vigilence_skill.png" >Vigilence - Eyes Wide Open</option>
+				<option value="img/forms/wild_skill.png" >Wild - Wind Runner</option>
+				<option value="img/forms/zen_skill.png" >Zen - Peaceful Heart</option>
+			</select>
+			<img class="w-100 c-toggle mb-2 d-none" id="skill-three-img" src=""/>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-3  d-none  c-toggle stooge hero warrior boss " id="base-col">
+		<select  onChange="showPicture('#build-img', this.options[this.selectedIndex].value)"  class="form-select c-select c-toggle stooge hero" title="build">
+			<option value="" >Choose Character Build</option>
+			<option value="img/builds/agile.png">Agile</option>
+			<option value="img/builds/bumbling.png">Bumbling</option>
+			<option value="img/builds/mysterious.png">Mysterious</option>
+			<option value="img/builds/overpowering.png">Overpowering</option>
+			<option value="img/builds/scheming.png">scheming</option>
+			<option value="img/builds/tough.png">Tough</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="build-img" src=""/>
+		
+		
+		<select onChange="changeArchetype(this.options[this.selectedIndex].value)" class="form-select c-select c-toggle hero" title="Type" id = "choose-archetype">
+			<option value="" >Choose Character Type</option>
+			<option value="focused">Focused</option>
+			<option value="fused">Fused</option>
+			<option value="frantic">Frantic</option>
+		</select>
+		
+		<select onChange="showPicture('#a-img-one', this.options[this.selectedIndex].value)" class="form-select  a-select c-select c-toggle a-toggle focused fused frantic " id="archetype-selector" title="archetype">
+			<option class="a-toggle focused" value="" >Choose Archetype</option>
+			<option class="a-toggle focused" value="img/archetypes/angel/focused.png" >Angel</option>
+			<option class="a-toggle focused" value="img/archetypes/calvary/focused.png" >Calvary</option>
+			<option class="a-toggle focused" value="img/archetypes/cyborg/focused.png" >Cyborg</option>
+			<option class="a-toggle focused" value="img/archetypes/demon/focused.png" >Demon</option>
+			<option class="a-toggle focused" value="img/archetypes/flametongue/focused.png" >Flametongue</option>
+			<option class="a-toggle focused" value="img/archetypes/gunkata/focused.png" >Gunkata</option>
+			<option class="a-toggle focused" value="img/archetypes/phantom/focused.png" >Phantom</option>
+			<option class="a-toggle focused" value="img/archetypes/punk/focused.png" >Punk</option>
+			<option class="a-toggle focused" value="img/archetypes/teacher/focused.png" >Teacher</option>
+			<option class="a-toggle focused" value="img/archetypes/trickster/focused.png" >Trickster</option>
+			<option class="a-toggle focused" value="img/archetypes/underdog/focused.png" >Underdog</option>
+			<option class="a-toggle focused" value="img/archetypes/wardancer/focused.png" >Wardancer</option>
+			<option class="a-toggle focused" value="img/archetypes/winterblossom/focused.png" >Winterblossom</option>
+			<option class="a-toggle fused" value="img/archetypes/angel/fused.png" >Angel</option>
+			<option class="a-toggle fused" value="img/archetypes/calvary/fused.png" >Calvary</option>
+			<option class="a-toggle fused " value="img/archetypes/cyborg/fused.png" >Cyborg</option>
+			<option class="a-toggle fused " value="img/archetypes/demon/fused.png" >Demon</option>
+			<option class="a-toggle fused " value="img/archetypes/flametongue/fused.png" >Flametongue</option>
+			<option class="a-toggle fused " value="img/archetypes/gunkata/fused.png" >Gunkata</option>
+			<option class="a-toggle fused " value="img/archetypes/phantom/fused.png" >Phantom</option>
+			<option class="a-toggle fused " value="img/archetypes/punk/fused.png" >Punk</option>
+			<option class="a-toggle fused " value="img/archetypes/teacher/fused.png" >Teacher</option>
+			<option class="a-toggle fused " value="img/archetypes/trickster/fused.png" >Trickster</option>
+			<option class="a-toggle fused " value="img/archetypes/underdog/fused.png" >Underdog</option>
+			<option class="a-toggle fused " value="img/archetypes/wardancer/fused.png" >Wardancer</option>
+			<option class="a-toggle fused " value="img/archetypes/winterblossom/fused.png" >Winterblossom</option>
+			<option class="a-toggle frantic" value="img/archetypes/angel/frantic.png" >Angel</option>
+			<option class="a-toggle frantic" value="img/archetypes/calvary/frantic.png" >Calvary</option>
+			<option class="a-toggle frantic " value="img/archetypes/cyborg/frantic.png" >Cyborg</option>
+			<option class="a-toggle frantic " value="img/archetypes/demon/frantic.png" >Demon</option>
+			<option class="a-toggle frantic " value="img/archetypes/flametongue/frantic.png" >Flametongue</option>
+			<option class="a-toggle frantic " value="img/archetypes/gunkata/frantic.png" >Gunkata</option>
+			<option class="a-toggle frantic " value="img/archetypes/phantom/frantic.png" >Phantom</option>
+			<option class="a-toggle frantic " value="img/archetypes/punk/frantic.png" >Punk</option>
+			<option class="a-toggle frantic " value="img/archetypes/teacher/frantic.png" >Teacher</option>
+			<option class="a-toggle frantic " value="img/archetypes/trickster/frantic.png" >Trickster</option>
+			<option class="a-toggle frantic " value="img/archetypes/underdog/frantic.png" >Underdog</option>
+			<option class="a-toggle frantic " value="img/archetypes/wardancer/frantic.png" >Wardancer</option>
+			<option class="a-toggle frantic " value="img/archetypes/winterblossom/frantic.png" >Winterblossom</option>
+		</select>
+		<img class="w-100 a-toggle c-toggle mb-2 d-none" id="a-img-one" src=""/>
+		
+		<select onChange="showPicture('#a-img-two', this.options[this.selectedIndex].value)" class="form-select  a-select c-select c-toggle a-toggle fused frantic boss warrior stooge" id="archetype-selector" title="archetype-two">
+			<option class="a-toggle fused" value="" >Choose Archetype</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge" value="img/archetypes/angel/fused.png" >Angel</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/blur.png" >Blur</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge" value="img/archetypes/calvary/fused.png" >Calvary</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/cyborg/fused.png" >Cyborg</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/demon/fused.png" >Demon</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/flametongue/fused.png" >Flametongue</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/giant.png" >Giant</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/gunkata/fused.png" >Gunkata</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/immortal.png" >Immortal</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/phantom/fused.png" >Phantom</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/punk/fused.png" >Punk</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/swarm.png" >Swarm</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/tank.png" >Tank</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/teacher/fused.png" >Teacher</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/trickster/fused.png" >Trickster</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/underdog/fused.png" >Underdog</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/untouchable.png" >Untouchable</option>
+			<option class="a-toggle c-toggle boss warrior stooge" value="img/archetypes/boss/vehicle.png" >Vehicle</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/wardancer/fused.png" >Wardancer</option>
+			<option class="a-toggle fused c-toggle boss warrior stooge " value="img/archetypes/winterblossom/fused.png" >Winterblossom</option>
+			<option class="a-toggle frantic" value="img/archetypes/angel/frantic.png" >Angel</option>
+			<option class="a-toggle frantic" value="img/archetypes/calvary/frantic.png" >Calvary</option>
+			<option class="a-toggle frantic " value="img/archetypes/cyborg/frantic.png" >Cyborg</option>
+			<option class="a-toggle frantic " value="img/archetypes/demon/frantic.png" >Demon</option>
+			<option class="a-toggle frantic " value="img/archetypes/flametongue/frantic.png" >Flametongue</option>
+			<option class="a-toggle frantic " value="img/archetypes/gunkata/frantic.png" >Gunkata</option>
+			<option class="a-toggle frantic " value="img/archetypes/phantom/frantic.png" >Phantom</option>
+			<option class="a-toggle frantic " value="img/archetypes/punk/frantic.png" >Punk</option>
+			<option class="a-toggle frantic " value="img/archetypes/teacher/frantic.png" >Teacher</option>
+			<option class="a-toggle frantic " value="img/archetypes/trickster/frantic.png" >Trickster</option>
+			<option class="a-toggle frantic " value="img/archetypes/underdog/frantic.png" >Underdog</option>
+			<option class="a-toggle frantic " value="img/archetypes/wardancer/frantic.png" >Wardancer</option>
+			<option class="a-toggle frantic " value="img/archetypes/winterblossom/frantic.png" >Winterblossom</option>
+		</select>
+		<img class="w-100 a-toggle c-toggle mb-2 d-none" id="a-img-two" src=""/>
+		
+		<select onChange="showPicture('#a-img-three', this.options[this.selectedIndex].value)"  class="form-select a-toggle  a-select c-select c-toggle frantic" id="archetype-selector" title="archetype-three">
+			<option class="a-toggle fused" value="" >Choose Archetype</option>
+			<option class="a-toggle frantic" value="img/archetypes/angel/frantic.png" >Angel</option>
+			<option class="a-toggle frantic" value="img/archetypes/calvary/frantic.png" >Calvary</option>
+			<option class="a-toggle frantic " value="img/archetypes/cyborg/frantic.png" >Cyborg</option>
+			<option class="a-toggle frantic " value="img/archetypes/demon/frantic.png" >Demon</option>
+			<option class="a-toggle frantic " value="img/archetypes/flametongue/frantic.png" >Flametongue</option>
+			<option class="a-toggle frantic " value="img/archetypes/gunkata/frantic.png" >Gunkata</option>
+			<option class="a-toggle frantic " value="img/archetypes/phantom/frantic.png" >Phantom</option>
+			<option class="a-toggle frantic " value="img/archetypes/punk/frantic.png" >Punk</option>
+			<option class="a-toggle frantic " value="img/archetypes/teacher/frantic.png" >Teacher</option>
+			<option class="a-toggle frantic " value="img/archetypes/trickster/frantic.png" >Trickster</option>
+			<option class="a-toggle frantic " value="img/archetypes/underdog/frantic.png" >Underdog</option>
+			<option class="a-toggle frantic " value="img/archetypes/wardancer/frantic.png" >Wardancer</option>
+			<option class="a-toggle frantic " value="img/archetypes/winterblossom/frantic.png" >Winterblossom</option>
+		</select>
+		<img class="w-100 a-toggle c-toggle mb-2 d-none" id="a-img-three" src=""/>
+		
+		
+		<img class="w-100 mb-2" src="img/base.png"/>
+		<img class="w-100 mb-2 c-toggle d-none stooge" src="img/archetypes/stooge/reinforcements.png"/>
+	</div>
+	<div class="col-3 d-none  c-toggle  hero boss stooge warrior" id="stance-one-col">
+		
+		<select onChange="showPicture('#style-one-img', this.options[this.selectedIndex].value)"  class="hero boss stooge warrior form-select c-select" title="style-one">
+			<option value="" >Choose Style</option>
+			<option value="img/archetypes/angel/halcyon.png" >Angel - Halcyon</option>
+			<option value="img/archetypes/angel/judgement.png" >Angel - Judgement</option>
+			<option value="img/archetypes/angel/shining.png" >Angel - Shining</option>
+			<option value="img/archetypes/angel/singing.png" >Angel - Singing</option>
+			<option value="img/archetypes/angel/winged.png" >Angel - Winged</option>
+			<option value="img/archetypes/calvary/charging.png" >Calvary - Charging</option>
+			<option value="img/archetypes/calvary/heroic.png" >Calvary - Heroic</option>
+			<option value="img/archetypes/calvary/jumping.png" >Calvary - Jumping</option>
+			<option value="img/archetypes/calvary/rallying.png" >Calvary - Rallying</option>
+			<option value="img/archetypes/cyborg/armored.png" >Calvary - Armored</option>
+			<option value="img/archetypes/cyborg/incinerator.png" >Cyborg - Incinerator</option>
+			<option value="img/archetypes/cyborg/machine.png" >Cyborg - Machine</option>
+			<option value="img/archetypes/cyborg/rocket.png" >Cyborg - Rocket</option>
+			<option value="img/archetypes/cyborg/syphon.png" >Cyborg - Syphon</option>
+			<option value="img/archetypes/demon/dark.png" >Demon - Dark</option>
+			<option value="img/archetypes/demon/ogre.png" >Demon - Ogre</option>
+			<option value="img/archetypes/demon/slasher.png" >Demon - Slasher</option>
+			<option value="img/archetypes/demon/vampire.png" >Demon - Vampire</option>
+			<option value="img/archetypes/demon/zombie.png" >Demon - Zombie</option>
+			<option value="img/archetypes/flametongue/burning.png" >Flametongue - Burning</option>
+			<option value="img/archetypes/flametongue/explosion.png" >Flametongue - Explosion</option>
+			<option value="img/archetypes/flametongue/inferno.png" >Flametongue - Inferno</option>
+			<option value="img/archetypes/flametongue/phoenix.png" >Flametongue - Phoenix</option>
+			<option value="img/archetypes/flametongue/volcanic.png" >Flametongue - Volcanic</option>
+			<option value="img/archetypes/gunkata/akimbo.png" >Gunkata - Akimbo</option>
+			<option value="img/archetypes/gunkata/artillery.png" >Gunkata - Artillery</option>
+			<option value="img/archetypes/gunkata/crosshair.png" >Gunkata - Crosshair</option>
+			<option value="img/archetypes/gunkata/ricochet.png" >Gunkata - Ricochet</option>
+			<option value="img/archetypes/gunkata/ten-thousand.png" >Gunkata - Ten Thousand</option>
+			<option value="img/archetypes/phantom/aura.png" >Phantom - Aura</option>
+			<option value="img/archetypes/phantom/crying.png" >Phantom - Crying</option>
+			<option value="img/archetypes/phantom/puppet.png" >Phantom - Puppet</option>
+			<option value="img/archetypes/phantom/spirit.png" >Phantom - Spirit</option>
+			<option value="img/archetypes/phantom/vortex.png" >Phantom - Vortex</option>
+			<option value="img/archetypes/punk/bleeding.png" >Punk - Bleeding</option>
+			<option value="img/archetypes/punk/brawling.png" >Punk - Brawling</option>
+			<option value="img/archetypes/punk/flashy.png" >Punk - Flashy</option>
+			<option value="img/archetypes/punk/knockdown.png" >Punk - Knockdown</option>
+			<option value="img/archetypes/punk/taunting.png" >Punk - Taunting</option>
+			<option value="img/archetypes/teacher/elder.png" >Teacher - Elder</option>
+			<option value="img/archetypes/teacher/mastermind.png" >Teacher - Mastermind</option>
+			<option value="img/archetypes/teacher/motivating.png" >Teacher - Motivating</option>
+			<option value="img/archetypes/teacher/patient.png" >Teacher - Patient</option>
+			<option value="img/archetypes/teacher/training.png" >Teacher - Training</option>
+			<option value="img/archetypes/trickster/caged.png" >Trickster - Caged</option>
+			<option value="img/archetypes/trickster/hidden.png" >Trickster - Hidden</option>
+			<option value="img/archetypes/trickster/illusion.png" >Trickster - Illusion</option>
+			<option value="img/archetypes/trickster/mysterious.png" >Trickster - Mysterious</option>
+			<option value="img/archetypes/trickster/whip.png" >Trickster - Whip</option>
+			<option value="img/archetypes/underdog/collateral.png" >Underdog - Collateral</option>
+			<option value="img/archetypes/underdog/distracting.png" >Underdog - Distracting</option>
+			<option value="img/archetypes/underdog/eye-of-the.png" >Underdog - Eye of the</option>
+			<option value="img/archetypes/underdog/lucky.png" >Underdog - Lucky</option>
+			<option value="img/archetypes/underdog/misfortune.png" >Underdog - Misfortune</option>
+			<option value="img/archetypes/wardancer/forbidden.png" >Wardancer - Forbidden</option>
+			<option value="img/archetypes/wardancer/lightning.png" >Wardancer - Lightning</option>
+			<option value="img/archetypes/wardancer/overwhelming.png" >Wardancer - Overwhelming</option>
+			<option value="img/archetypes/wardancer/relentless.png" >Wardancer - Relentless</option>
+			<option value="img/archetypes/wardancer/weightless.png" >Wardancer - Weightless</option>
+			<option value="img/archetypes/winterblossom/crystal.png" >Winterblossom - Crystal</option>
+			<option value="img/archetypes/winterblossom/frozen.png" >Winterblossom - Frozen</option>
+			<option value="img/archetypes/winterblossom/precision.png" >Winterblossom - Precision</option>
+			<option value="img/archetypes/winterblossom/pressure.png" >Winterblossom - Pressure</option>
+			<option value="img/archetypes/winterblossom/reflected.png" >Winterblossom - Reflected</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="style-one-img" src=""/>
+		
+		<select onChange="changeForm('#form-one-img', this.options[this.selectedIndex].value, this.selectedIndex, 'one')" class="hero boss stooge warrior form-select c-select" title="form-one">
+			<option value="" >Choose Form</option>
+			<option value="img/forms/blaster_form.png" >Blaster</option>
+			<option value="img/forms/control_form.png" >Control</option>
+			<option value="img/forms/dance_form.png" >Dance</option>
+			<option value="img/forms/iron_form.png" >Iron</option>
+			<option value="img/forms/one-two_form.png" >One Two</option>
+			<option value="img/forms/power_form.png" >Power</option>
+			<option value="img/forms/reversal_form.png" >Reversal</option>
+			<option value="img/forms/shadow_form.png" >Shadow</option>
+			<option value="img/forms/song_form.png" >Song</option>
+			<option value="img/forms/vigilance_form.png" >Vigilence</option>
+			<option value="img/forms/wild_form.png" >Wild</option>
+			<option value="img/forms/zen_form.png" >Zen</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="form-one-img" src=""/>
+	</div>	
+	<div class="col-3 d-none  c-toggle  hero boss" id="stance-two-col"> 
+		
+		<select onChange="showPicture('#style-two-img', this.options[this.selectedIndex].value)"  class="hero boss form-select c-select" title="style-two">
+			<option value="" >Choose Style</option>
+			<option value="img/archetypes/angel/halcyon.png" >Angel - Halcyon</option>
+			<option value="img/archetypes/angel/judgement.png" >Angel - Judgement</option>
+			<option value="img/archetypes/angel/shining.png" >Angel - Shining</option>
+			<option value="img/archetypes/angel/singing.png" >Angel - Singing</option>
+			<option value="img/archetypes/angel/winged.png" >Angel - Winged</option>
+			<option value="img/archetypes/calvary/charging.png" >Calvary - Charging</option>
+			<option value="img/archetypes/calvary/heroic.png" >Calvary - Heroic</option>
+			<option value="img/archetypes/calvary/jumping.png" >Calvary - Jumping</option>
+			<option value="img/archetypes/calvary/rallying.png" >Calvary - Rallying</option>
+			<option value="img/archetypes/cyborg/armored.png" >Calvary - Armored</option>
+			<option value="img/archetypes/cyborg/incinerator.png" >Cyborg - Incinerator</option>
+			<option value="img/archetypes/cyborg/machine.png" >Cyborg - Machine</option>
+			<option value="img/archetypes/cyborg/rocket.png" >Cyborg - Rocket</option>
+			<option value="img/archetypes/cyborg/syphon.png" >Cyborg - Syphon</option>
+			<option value="img/archetypes/demon/dark.png" >Demon - Dark</option>
+			<option value="img/archetypes/demon/ogre.png" >Demon - Ogre</option>
+			<option value="img/archetypes/demon/slasher.png" >Demon - Slasher</option>
+			<option value="img/archetypes/demon/vampire.png" >Demon - Vampire</option>
+			<option value="img/archetypes/demon/zombie.png" >Demon - Zombie</option>
+			<option value="img/archetypes/flametongue/burning.png" >Flametongue - Burning</option>
+			<option value="img/archetypes/flametongue/explosion.png" >Flametongue - Explosion</option>
+			<option value="img/archetypes/flametongue/inferno.png" >Flametongue - Inferno</option>
+			<option value="img/archetypes/flametongue/phoenix.png" >Flametongue - Phoenix</option>
+			<option value="img/archetypes/flametongue/volcanic.png" >Flametongue - Volcanic</option>
+			<option value="img/archetypes/gunkata/akimbo.png" >Gunkata - Akimbo</option>
+			<option value="img/archetypes/gunkata/artillery.png" >Gunkata - Artillery</option>
+			<option value="img/archetypes/gunkata/crosshair.png" >Gunkata - Crosshair</option>
+			<option value="img/archetypes/gunkata/ricochet.png" >Gunkata - Ricochet</option>
+			<option value="img/archetypes/gunkata/ten-thousand.png" >Gunkata - Ten Thousand</option>
+			<option value="img/archetypes/phantom/aura.png" >Phantom - Aura</option>
+			<option value="img/archetypes/phantom/crying.png" >Phantom - Crying</option>
+			<option value="img/archetypes/phantom/puppet.png" >Phantom - Puppet</option>
+			<option value="img/archetypes/phantom/spirit.png" >Phantom - Spirit</option>
+			<option value="img/archetypes/phantom/vortex.png" >Phantom - Vortex</option>
+			<option value="img/archetypes/punk/bleeding.png" >Punk - Bleeding</option>
+			<option value="img/archetypes/punk/brawling.png" >Punk - Brawling</option>
+			<option value="img/archetypes/punk/flashy.png" >Punk - Flashy</option>
+			<option value="img/archetypes/punk/knockdown.png" >Punk - Knockdown</option>
+			<option value="img/archetypes/punk/taunting.png" >Punk - Taunting</option>
+			<option value="img/archetypes/teacher/elder.png" >Teacher - Elder</option>
+			<option value="img/archetypes/teacher/mastermind.png" >Teacher - Mastermind</option>
+			<option value="img/archetypes/teacher/motivating.png" >Teacher - Motivating</option>
+			<option value="img/archetypes/teacher/patient.png" >Teacher - Patient</option>
+			<option value="img/archetypes/teacher/training.png" >Teacher - Training</option>
+			<option value="img/archetypes/trickster/caged.png" >Trickster - Caged</option>
+			<option value="img/archetypes/trickster/hidden.png" >Trickster - Hidden</option>
+			<option value="img/archetypes/trickster/illusion.png" >Trickster - Illusion</option>
+			<option value="img/archetypes/trickster/mysterious.png" >Trickster - Mysterious</option>
+			<option value="img/archetypes/trickster/whip.png" >Trickster - Whip</option>
+			<option value="img/archetypes/underdog/collateral.png" >Underdog - Collateral</option>
+			<option value="img/archetypes/underdog/distracting.png" >Underdog - Distracting</option>
+			<option value="img/archetypes/underdog/eye-of-the.png" >Underdog - Eye of the</option>
+			<option value="img/archetypes/underdog/lucky.png" >Underdog - Lucky</option>
+			<option value="img/archetypes/underdog/misfortune.png" >Underdog - Misfortune</option>
+			<option value="img/archetypes/wardancer/forbidden.png" >Wardancer - Forbidden</option>
+			<option value="img/archetypes/wardancer/lightning.png" >Wardancer - Lightning</option>
+			<option value="img/archetypes/wardancer/overwhelming.png" >Wardancer - Overwhelming</option>
+			<option value="img/archetypes/wardancer/relentless.png" >Wardancer - Relentless</option>
+			<option value="img/archetypes/wardancer/weightless.png" >Wardancer - Weightless</option>
+			<option value="img/archetypes/winterblossom/crystal.png" >Winterblossom - Crystal</option>
+			<option value="img/archetypes/winterblossom/frozen.png" >Winterblossom - Frozen</option>
+			<option value="img/archetypes/winterblossom/precision.png" >Winterblossom - Precision</option>
+			<option value="img/archetypes/winterblossom/pressure.png" >Winterblossom - Pressure</option>
+			<option value="img/archetypes/winterblossom/reflected.png" >Winterblossom - Reflected</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="style-two-img" src=""/>
+		
+		<select onChange="changeForm('#form-two-img', this.options[this.selectedIndex].value, this.selectedIndex, 'two')" class="hero boss form-select c-select" title="form-two">
+			<option value="" >Choose Form</option>
+			<option value="img/forms/blaster_form.png" >Blaster</option>
+			<option value="img/forms/control_form.png" >Control</option>
+			<option value="img/forms/dance_form.png" >Dance</option>
+			<option value="img/forms/iron_form.png" >Iron</option>
+			<option value="img/forms/one-two_form.png" >One Two</option>
+			<option value="img/forms/power_form.png" >Power</option>
+			<option value="img/forms/reversal_form.png" >Reversal</option>
+			<option value="img/forms/shadow_form.png" >Shadow</option>
+			<option value="img/forms/song_form.png" >Song</option>
+			<option value="img/forms/vigilance_form.png" >Vigilence</option>
+			<option value="img/forms/wild_form.png" >Wild</option>
+			<option value="img/forms/zen_form.png" >Zen</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="form-two-img" src=""/>
+		
+	
+	</div>	
+	<div class="col-3 d-none  c-toggle hero boss" id="stance-three-col">	
+		<select onChange="showPicture('#style-three-img', this.options[this.selectedIndex].value)"  class="form-select c-select hero boss" title="style-three">
+			<option value="" >Choose Style</option>
+			<option value="img/archetypes/angel/halcyon.png" >Angel - Halcyon</option>
+			<option value="img/archetypes/angel/judgement.png" >Angel - Judgement</option>
+			<option value="img/archetypes/angel/shining.png" >Angel - Shining</option>
+			<option value="img/archetypes/angel/singing.png" >Angel - Singing</option>
+			<option value="img/archetypes/angel/winged.png" >Angel - Winged</option>
+			<option value="img/archetypes/calvary/charging.png" >Calvary - Charging</option>
+			<option value="img/archetypes/calvary/heroic.png" >Calvary - Heroic</option>
+			<option value="img/archetypes/calvary/jumping.png" >Calvary - Jumping</option>
+			<option value="img/archetypes/calvary/rallying.png" >Calvary - Rallying</option>
+			<option value="img/archetypes/cyborg/armored.png" >Calvary - Armored</option>
+			<option value="img/archetypes/cyborg/incinerator.png" >Cyborg - Incinerator</option>
+			<option value="img/archetypes/cyborg/machine.png" >Cyborg - Machine</option>
+			<option value="img/archetypes/cyborg/rocket.png" >Cyborg - Rocket</option>
+			<option value="img/archetypes/cyborg/syphon.png" >Cyborg - Syphon</option>
+			<option value="img/archetypes/demon/dark.png" >Demon - Dark</option>
+			<option value="img/archetypes/demon/ogre.png" >Demon - Ogre</option>
+			<option value="img/archetypes/demon/slasher.png" >Demon - Slasher</option>
+			<option value="img/archetypes/demon/vampire.png" >Demon - Vampire</option>
+			<option value="img/archetypes/demon/zombie.png" >Demon - Zombie</option>
+			<option value="img/archetypes/flametongue/burning.png" >Flametongue - Burning</option>
+			<option value="img/archetypes/flametongue/explosion.png" >Flametongue - Explosion</option>
+			<option value="img/archetypes/flametongue/inferno.png" >Flametongue - Inferno</option>
+			<option value="img/archetypes/flametongue/phoenix.png" >Flametongue - Phoenix</option>
+			<option value="img/archetypes/flametongue/volcanic.png" >Flametongue - Volcanic</option>
+			<option value="img/archetypes/gunkata/akimbo.png" >Gunkata - Akimbo</option>
+			<option value="img/archetypes/gunkata/artillery.png" >Gunkata - Artillery</option>
+			<option value="img/archetypes/gunkata/crosshair.png" >Gunkata - Crosshair</option>
+			<option value="img/archetypes/gunkata/ricochet.png" >Gunkata - Ricochet</option>
+			<option value="img/archetypes/gunkata/ten-thousand.png" >Gunkata - Ten Thousand</option>
+			<option value="img/archetypes/phantom/aura.png" >Phantom - Aura</option>
+			<option value="img/archetypes/phantom/crying.png" >Phantom - Crying</option>
+			<option value="img/archetypes/phantom/puppet.png" >Phantom - Puppet</option>
+			<option value="img/archetypes/phantom/spirit.png" >Phantom - Spirit</option>
+			<option value="img/archetypes/phantom/vortex.png" >Phantom - Vortex</option>
+			<option value="img/archetypes/punk/bleeding.png" >Punk - Bleeding</option>
+			<option value="img/archetypes/punk/brawling.png" >Punk - Brawling</option>
+			<option value="img/archetypes/punk/flashy.png" >Punk - Flashy</option>
+			<option value="img/archetypes/punk/knockdown.png" >Punk - Knockdown</option>
+			<option value="img/archetypes/punk/taunting.png" >Punk - Taunting</option>
+			<option value="img/archetypes/teacher/elder.png" >Teacher - Elder</option>
+			<option value="img/archetypes/teacher/mastermind.png" >Teacher - Mastermind</option>
+			<option value="img/archetypes/teacher/motivating.png" >Teacher - Motivating</option>
+			<option value="img/archetypes/teacher/patient.png" >Teacher - Patient</option>
+			<option value="img/archetypes/teacher/training.png" >Teacher - Training</option>
+			<option value="img/archetypes/trickster/caged.png" >Trickster - Caged</option>
+			<option value="img/archetypes/trickster/hidden.png" >Trickster - Hidden</option>
+			<option value="img/archetypes/trickster/illusion.png" >Trickster - Illusion</option>
+			<option value="img/archetypes/trickster/mysterious.png" >Trickster - Mysterious</option>
+			<option value="img/archetypes/trickster/whip.png" >Trickster - Whip</option>
+			<option value="img/archetypes/underdog/collateral.png" >Underdog - Collateral</option>
+			<option value="img/archetypes/underdog/distracting.png" >Underdog - Distracting</option>
+			<option value="img/archetypes/underdog/eye-of-the.png" >Underdog - Eye of the</option>
+			<option value="img/archetypes/underdog/lucky.png" >Underdog - Lucky</option>
+			<option value="img/archetypes/underdog/misfortune.png" >Underdog - Misfortune</option>
+			<option value="img/archetypes/wardancer/forbidden.png" >Wardancer - Forbidden</option>
+			<option value="img/archetypes/wardancer/lightning.png" >Wardancer - Lightning</option>
+			<option value="img/archetypes/wardancer/overwhelming.png" >Wardancer - Overwhelming</option>
+			<option value="img/archetypes/wardancer/relentless.png" >Wardancer - Relentless</option>
+			<option value="img/archetypes/wardancer/weightless.png" >Wardancer - Weightless</option>
+			<option value="img/archetypes/winterblossom/crystal.png" >Winterblossom - Crystal</option>
+			<option value="img/archetypes/winterblossom/frozen.png" >Winterblossom - Frozen</option>
+			<option value="img/archetypes/winterblossom/precision.png" >Winterblossom - Precision</option>
+			<option value="img/archetypes/winterblossom/pressure.png" >Winterblossom - Pressure</option>
+			<option value="img/archetypes/winterblossom/reflected.png" >Winterblossom - Reflected</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="style-three-img" src=""/>
+		
+		<select onChange="changeForm('#form-three-img', this.options[this.selectedIndex].value, this.selectedIndex, 'three')" class="form-select c-select hero boss" title="form-three">
+			<option value="" >Choose Form</option>
+			<option value="img/forms/blaster_form.png" >Blaster</option>
+			<option value="img/forms/control_form.png" >Control</option>
+			<option value="img/forms/dance_form.png" >Dance</option>
+			<option value="img/forms/iron_form.png" >Iron</option>
+			<option value="img/forms/one-two_form.png" >One Two</option>
+			<option value="img/forms/power_form.png" >Power</option>
+			<option value="img/forms/reversal_form.png" >Reversal</option>
+			<option value="img/forms/shadow_form.png" >Shadow</option>
+			<option value="img/forms/song_form.png" >Song</option>
+			<option value="img/forms/vigilance_form.png" >Vigilence</option>
+			<option value="img/forms/wild_form.png" >Wild</option>
+			<option value="img/forms/zen_form.png" >Zen</option>
+		</select>
+		<img class="w-100 c-toggle mb-2 d-none" id="form-three-img" src=""/>
+	
+	</div>	
+	</div>
+
+</body>
+</html>
+
+<script>
+	
+	
+	addEventListener("keypress", (event) => {
+		if ($("textarea").is(":focus") || $("input").is(":focus")) {
+			return;
+		}
+		if (event.key = 'h') {
+			let hide = $(".help-content").is(":visible");
+			$(".help-content").toggleClass("d-none", hide);
+			if (!hide) {
+				$("." + document.querySelector('input[name="inlineRadioOptions"]:checked').value).removeClass("d-none");
+				$("." + $("#choose-archetype").val()).removeClass("d-none");
+			} else {
+				$("select").addClass("d-none");
+			}
+			
+		} else {
+			$(".help-content").removeClass("d-none");
+			$("select").removeClass("d-none");
+		}
+	});
+	
+	function toggleCharacter(val) {
+			$(".c-toggle").addClass("d-none");
+			$(".c-select").val("");
+			$("." + val).removeClass("d-none");
+	}
+	function changeArchetype(val) {
+			$(".a-toggle").addClass("d-none");
+			$(".a-select").val("");
+			$("." + val).removeClass("d-none");
+	}
+	function showPicture(id, path) {
+		$(id).prop("src", path).removeClass("d-none");
+	}
+	function changeForm(id, path, index, stanceNo) {
+		showPicture(id, path);
+		if ($("#skill-one").is(":visible"))
+			$("#skill-"+stanceNo).val($("#skill-"+stanceNo + " option:eq("+index+")").val()).trigger('change');
+	}
+	
+	
+</script>
+
+<style>
+	select {
+		margin-bottom: 20px;;
+	}
+	input.name {
+		border:none;
+		border-bottom:2px solid black;
+		width:100%;
+		margin-bottom: 20px;;
+	}
+	
+	input.skill-name::placeholder{
+		color:white;
+	}
+	input.skill-name[type=text]{
+	    width: 100%;
+	    border: None;
+	    color:white;
+	    padding-left: 30px;
+	    padding-bottom: 10px;
+	    background: linear-gradient(156deg, rgba(236,91,0,1) 74%, rgba(255,255,149,1) 75%);
+	}
+	
+	textarea::placeholder{
+		color:black;
+	}
+	textarea{
+	    border: none;
+	    border-left: 20px solid #FB7E3F;
+	    width: 100%;
+	    padding-left: 10px;
+	    background: linear-gradient(156deg, rgba(251,194,114,1) 0%, rgba(255,255,149,1) 31%);
+	}
+	body {
+		padding-left:20px;
+		padding-right:20px;
+	}
+</style>
